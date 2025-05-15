@@ -68,7 +68,8 @@ export default function LoginPage() {
               <strong className="text-gray-900">📲 0977 104 3990</strong>
             </p>
             <p className="mt-2 text-sm italic text-gray-500">
-              We'll activate your access shortly after verifying your payment.
+              We&apos;ll activate your access shortly after verifying your
+              payment.
             </p>
           </div>
         </div>

@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import { supabase } from "@/lib/supabase";
@@ -7,42 +8,44 @@ import { Save, FileText } from "lucide-react";
 
 const EmailEditor = dynamic(() => import("react-email-editor"), { ssr: false });
 
+type EmailEditorRefType = {
+  editor?: {
+    exportHtml: (
+      callback: (data: { design: object; html: string }) => void
+    ) => void;
+  };
+};
+
 export default function EmailBuilder() {
   const [name, setName] = useState("");
-  const emailEditorRef = useRef<any>(null);
+  const emailEditorRef = useRef<EmailEditorRefType>(null);
   const router = useRouter();
 
   const handleSave = async () => {
     if (!name) return alert("Template name is required.");
 
-    emailEditorRef.current?.editor?.exportHtml(async (data: any) => {
+    emailEditorRef.current?.editor?.exportHtml(async (data) => {
       let { html } = data;
 
-      // Inject viewport meta tag for mobile scaling
       if (!html.includes('<meta name="viewport"')) {
         html = html.replace(
           "<head>",
           `<head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />`
         );
       }
-
-      // Optional: Inject mobile-friendly CSS for better responsiveness
       const mobileCss = `
       <style>
-        /* Ensure images scale on mobile */
         img {
           max-width: 100% !important;
           height: auto !important;
           display: block;
           margin: 0 auto;
         }
-        /* Prevent email body from exceeding screen width */
         body, table {
           max-width: 600px !important;
           width: 100% !important;
           margin: 0 auto !important;
         }
-        /* Stack columns on mobile */
         @media only screen and (max-width: 480px) {
           .container, .row {
             width: 100% !important;
@@ -85,7 +88,7 @@ export default function EmailBuilder() {
           Create Email Template
         </h1>
 
-        {/* Input + Save Button Group */}
+        {/* Input + Save Button */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8">
           <input
             type="text"
