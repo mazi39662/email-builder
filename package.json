@@ -9,22 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@refinedev/core": "^4.57.9",
+    "@refinedev/react-hook-form": "^4.9.3",
     "@supabase/supabase-js": "^2.49.4",
     "autoprefixer": "^10.4.21",
     "grapesjs": "^0.22.7",
     "lucide-react": "^0.510.0",
     "next": "15.3.2",
     "postcss": "^8.5.3",
-    "react": "^19.1.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-email-editor": "^1.7.11"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^18.3.21",
+    "@types/react-dom": "^18.3.7",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "tailwindcss": "^4.1.6",
