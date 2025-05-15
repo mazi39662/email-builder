@@ -19,10 +19,9 @@
       }
     ],
 
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@providers/*": ["providers/*"],
-      "@components/*": ["components/*"]
+      "@/*": ["src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
